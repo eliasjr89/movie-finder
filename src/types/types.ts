@@ -6,7 +6,15 @@ export type ButtonProps = {
   variant?: "primary" | "secondary";
   loading?: boolean;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   type?: "button" | "submit" | "reset";
   className?: string;
+};
+
+export type MovieCardProps = {
+  title: string;
+  year: string;
+  posterUrl: string;
+  isFavorite: boolean;
+  onToggleFavorite: () => void;
 };
