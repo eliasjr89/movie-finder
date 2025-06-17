@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { ThemeToggle } from "../components/UI/ThemeToggle";
+import { Heart, Search, Home } from "lucide-react";
+import { Button } from "../components/UI/Button";
 
 export const Navbar = () => {
   return (
@@ -7,37 +9,22 @@ export const Navbar = () => {
       <h1 className="text-xl font-bold text-primary">Movie Finder</h1>
 
       <div className="flex items-center gap-4">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary font-semibold underline"
-              : "text-gray-600 dark:text-gray-300 hover:text-primary"
-          }
-        >
-          Home
+        <NavLink to="/">
+          <Button variant="secondary" icon={<Home className="w-4 h-4" />}>
+            Home
+          </Button>
         </NavLink>
 
-        <NavLink
-          to="/search"
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary font-semibold underline"
-              : "text-gray-600 dark:text-gray-300 hover:text-primary"
-          }
-        >
-          Search
+        <NavLink to="/search">
+          <Button variant="secondary" icon={<Search className="w-4 h-4" />}>
+            Search
+          </Button>
         </NavLink>
 
-        <NavLink
-          to="/favorites"
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary font-semibold underline"
-              : "text-gray-600 dark:text-gray-300 hover:text-primary"
-          }
-        >
-          Favorites
+        <NavLink to="/favorites">
+          <Button variant="secondary" icon={<Heart className="w-4 h-4" />}>
+            Favorites
+          </Button>
         </NavLink>
 
         <ThemeToggle />

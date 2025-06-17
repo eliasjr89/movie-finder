@@ -1,0 +1,12 @@
+import type { ReactNode } from "react";
+
+export type ButtonProps = {
+  children?: ReactNode;
+  icon?: ReactNode;
+  variant?: "primary" | "secondary";
+  loading?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  className?: string;
+};
