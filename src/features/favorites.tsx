@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MovieCard } from "../components/UI/MovieCard";
+import { Loader } from "../components/UI/Loader";
 
 const mockFavorites = [
   {
@@ -15,12 +16,21 @@ export const Favorites = () => {
   const [favorites, setFavorites] = useState<number[]>(
     mockFavorites.map((m) => m.id)
   );
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
 
   const toggleFavorite = (id: number) => {
     setFavorites((prev) =>
       prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
     );
   };
+
+  if (loading) return <Loader text="Loading favorites..." />;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

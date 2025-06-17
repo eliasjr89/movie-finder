@@ -18,3 +18,9 @@ export type MovieCardProps = {
   isFavorite: boolean;
   onToggleFavorite: () => void;
 };
+
+export type LoaderProps = {
+  size?: number; // tamaño en px, por defecto 32
+  colorClass?: string; // Tailwind class para color, por defecto border-primary
+  text?: string; // texto debajo del loader opcional
+};
