@@ -21,15 +21,23 @@ export const ThemeToggle = () => {
       if (prefersDark) {
         document.documentElement.classList.add("dark");
         setIsDark(true);
+      } else {
+        document.documentElement.classList.remove("dark");
+        setIsDark(false);
       }
     }
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = isDark ? "light" : "dark";
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark");
-    setIsDark(!isDark);
+    if (isDark) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setIsDark(true);
+    }
   };
 
   return (
@@ -38,6 +46,7 @@ export const ThemeToggle = () => {
       variant="secondary"
       icon={isDark ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
       aria-label="Toggle Theme"
+      aria-pressed={isDark}
     >
       {isDark ? "Dark" : "Light"}
     </Button>
