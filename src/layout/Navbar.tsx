@@ -9,22 +9,43 @@ export const Navbar = () => {
       <h1 className="text-xl font-bold text-primary">Movie Finder</h1>
 
       <div className="flex items-center gap-4">
-        <NavLink to="/">
-          <Button variant="secondary" icon={<Home className="w-4 h-4" />}>
-            Home
-          </Button>
+        <NavLink to="/" end>
+          {({ isActive }) => (
+            <Button
+              variant="secondary"
+              icon={<Home className="w-4 h-4" />}
+              className={isActive ? "bg-primary text-white" : ""}
+              aria-current={isActive ? "page" : undefined}
+            >
+              Home
+            </Button>
+          )}
         </NavLink>
 
         <NavLink to="/search">
-          <Button variant="secondary" icon={<Search className="w-4 h-4" />}>
-            Search
-          </Button>
+          {({ isActive }) => (
+            <Button
+              variant="secondary"
+              icon={<Search className="w-4 h-4" />}
+              className={isActive ? "bg-primary text-white" : ""}
+              aria-current={isActive ? "page" : undefined}
+            >
+              Search
+            </Button>
+          )}
         </NavLink>
 
         <NavLink to="/favorites">
-          <Button variant="secondary" icon={<Heart className="w-4 h-4" />}>
-            Favorites
-          </Button>
+          {({ isActive }) => (
+            <Button
+              variant="secondary"
+              icon={<Heart className="w-4 h-4" />}
+              className={isActive ? "bg-primary text-white" : ""}
+              aria-current={isActive ? "page" : undefined}
+            >
+              Favorites
+            </Button>
+          )}
         </NavLink>
 
         <ThemeToggle />

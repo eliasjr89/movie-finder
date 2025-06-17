@@ -6,9 +6,14 @@ export const Footer = () => {
         <a
           href="https://github.com/eliasjr89"
           className="underline hover:text-primary"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           eliasjr89
         </a>
+      </p>
+      <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
+        &copy; {new Date().getFullYear()} Movie Finder. All rights reserved.
       </p>
     </footer>
   );
