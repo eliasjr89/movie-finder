@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MovieCard } from "../components/UI/MovieCard";
+import { Loader } from "../components/UI/Loader";
 
 const mockSearchResults = [
   {
@@ -20,6 +21,18 @@ const mockSearchResults = [
 
 export const Search = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [movies, setMovies] = useState<typeof mockSearchResults>([]);
+
+  useEffect(() => {
+    // Simular carga de datos con timeout
+    const timer = setTimeout(() => {
+      setMovies(mockSearchResults);
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleFavorite = (id: number) => {
     setFavorites((prev) =>
@@ -27,9 +40,13 @@ export const Search = () => {
     );
   };
 
+  if (loading) {
+    return <Loader text="Loading results..." />;
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {mockSearchResults.map((movie) => (
+      {movies.map((movie) => (
         <MovieCard
           key={movie.id}
           title={movie.title}
