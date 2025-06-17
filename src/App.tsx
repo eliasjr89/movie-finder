@@ -1,11 +1,13 @@
+import { ThemeToggle } from "./components/ThemeToggle";
 import "./styles/tailwind.css";
 
-function App() {
+export const App = () => {
   return (
     <>
-      <div id="root">Hello World</div>
+      <div id="root">
+        <h1>Hello World</h1>
+        <ThemeToggle />
+      </div>
     </>
   );
-}
-
-export default App;
+};
