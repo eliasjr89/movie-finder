@@ -12,6 +12,7 @@ export type ButtonProps = {
 };
 
 export type MovieCardProps = {
+  id: number;
   title: string;
   year: string;
   posterUrl: string;
@@ -20,7 +21,19 @@ export type MovieCardProps = {
 };
 
 export type LoaderProps = {
-  size?: number; // tamaño en px, por defecto 32
-  colorClass?: string; // Tailwind class para color, por defecto border-primary
-  text?: string; // texto debajo del loader opcional
+  size?: number;
+  colorClass?: string;
+  text?: string;
 };
+
+export type MovieDetailType = {
+  id: number;
+  title: string;
+  release_date: string;
+  poster_path: string;
+  overview: string;
+  director?: string;
+  cast?: string[];
+  rating?: number;
+};
+
