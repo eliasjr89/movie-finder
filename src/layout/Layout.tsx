@@ -9,7 +9,11 @@ export const Layout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-6">
+      <main
+        role="main"
+        aria-live="polite"
+        className="flex-grow container mx-auto px-4 py-6"
+      >
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={location.pathname}
