@@ -6,20 +6,26 @@ import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid";
 import type { MovieCardProps } from "../../types/types";
 import { Button } from "./Button";
 
-export const MovieCard: React.FC<MovieCardProps> = ({
+type Props = MovieCardProps & {
+  onClick?: () => void;
+};
+
+export const MovieCard: React.FC<Props> = ({
   title,
   year,
   posterUrl,
   isFavorite,
   onToggleFavorite,
+  onClick,
 }) => {
   const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+    e.stopPropagation(); // evita que se dispare onClick de la card
     onToggleFavorite();
   };
 
   return (
     <motion.div
+      onClick={onClick}
       className="relative bg-gray-900 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-300 max-w-xs mx-auto"
       whileHover={{ scale: 1.03 }}
       layout
